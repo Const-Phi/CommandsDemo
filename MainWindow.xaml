@@ -1,0 +1,60 @@
+﻿<Window x:Class="ResorcesDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ResorcesDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <!--<Window.Resources>
+        <BitmapImage x:Key="undo" UriSource="pack://application:,,,/actionUndo.png"/>
+    </Window.Resources>-->
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="CommandNew_CanExecute" PreviewExecuted="CommandBinding_PreviewExecuted"/>
+        <CommandBinding Command="Open" CanExecute="CommandNew_CanExecute" PreviewExecuted="CommandBinding_PreviewExecuted"/>
+        <CommandBinding Command="local:CustomCommands.Exit" CanExecute="CommandNew_CanExecute" PreviewExecuted="CommandBinding_PreviewExecuted_1"/>
+
+    </Window.CommandBindings>
+    
+    
+    <Grid>
+        <!--<Image Source="{StaticResource undo}"/>-->
+        <!--<Image Source="actionUndo.png"/>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="Файл">
+                <MenuItem Command="New"/>
+                <MenuItem Command="Open"/>
+                <MenuItem Command="Save"/>
+                <MenuItem Command="SaveAs"/>
+                <Separator/>
+                <MenuItem Command="Close"/>
+                <MenuItem Command="local:CustomCommands.Exit"/>
+            </MenuItem>
+            <MenuItem Header="Правка">
+                <MenuItem Command="Undo"/>
+                <MenuItem Command="Redo"/>
+                <Separator/>
+                <MenuItem Command="Cut"/>
+                <MenuItem Command="Copy"/>
+                <MenuItem Command="Paste"/>
+            </MenuItem>
+            <MenuItem Header="Справка">
+                <MenuItem Command="Help"/>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Command="New" Content="Создать..."/>
+
+        </StackPanel>
+        
+    </Grid>
+</Window>
